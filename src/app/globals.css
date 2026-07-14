@@ -139,3 +139,40 @@
 body[data-menu-open="true"] .page-index-label {
   transform: translateY(40px);
 }
+
+/* ── Scrollbar (desktop only) ───────────────────────────────────────────── */
+@media (min-width: 1024px) {
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #2F5FD5;
+    border-radius: 999px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #2451c4;
+  }
+
+  /* Firefox */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #2F5FD5 transparent;
+  }
+}
+
+/* Mobile / tablet: hide scrollbar entirely */
+@media (max-width: 1023px) {
+  * {
+    scrollbar-width: none;
+  }
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+}

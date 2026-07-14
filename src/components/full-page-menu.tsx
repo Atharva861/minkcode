@@ -30,27 +30,24 @@ export function FullPageMenu({ open, onClose }: Props) {
     <AnimatePresence>
       {open && (
         <motion.div
-          initial={{ clipPath: "circle(0% at 100% 0%)" }}
-          animate={{ clipPath: "circle(150% at 100% 0%)" }}
-          exit={{ clipPath: "circle(0% at 100% 0%)" }}
+          initial={{ clipPath: "circle(0% at var(--menu-origin-x, 100%) var(--menu-origin-y, 0%))" }}
+          animate={{ clipPath: "circle(150% at var(--menu-origin-x, 100%) var(--menu-origin-y, 0%))" }}
+          exit={{ clipPath: "circle(0% at var(--menu-origin-x, 100%) var(--menu-origin-y, 0%))" }}
           transition={{ duration: 0.7, ease: [0.76, 0, 0.24, 1] }}
-          className="fixed inset-0 z-[90] flex flex-col bg-primary text-primary-foreground"
+          className="fixed inset-0 z-[90] flex flex-col bg-primary text-primary-foreground [--menu-origin-x:calc(100%-52px)] [--menu-origin-y:52px] md:[--menu-origin-x:calc(100%-68px)] md:[--menu-origin-y:60px] lg:[--menu-origin-x:calc(100%-84px)] lg:[--menu-origin-y:60px]"
         >
           <div className="flex items-center justify-between px-6 pt-6 md:px-10 md:pt-8 lg:px-14">
             <Link
               href="/"
               onClick={onClose}
-              className="font-display font-semibold leading-[0.85] tracking-[-0.06em] text-[3.5rem]"
+              className="block"
             >
-              <span>mink</span>
-              <span
-                style={{
-                  color: "transparent",
-                  WebkitTextStroke: "1.5px #FFF9E8",
-                }}
-              >
-                code
-              </span>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/logo/logo-horizontal-inverted.svg"
+                alt="minkcode"
+                className="h-10 w-auto md:h-12"
+              />
             </Link>
 
           </div>

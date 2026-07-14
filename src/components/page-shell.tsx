@@ -19,16 +19,13 @@ export function PageShell({ children, index }: Props) {
       className="min-h-screen w-full"
     >
       <div className="flex items-center px-6 pt-6 md:px-10 md:pt-8 lg:px-14">
-        <Link href="/" className="font-display font-semibold leading-[0.85] tracking-[-0.06em] text-[3.5rem]">
-          <span className="text-primary">mink</span>
-          <span
-            style={{
-              color: "transparent",
-              WebkitTextStroke: "1.2px var(--color-primary)",
-            }}
-          >
-            code
-          </span>
+        <Link href="/" className="block">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/logo/logo-horizontal.svg"
+            alt="minkcode"
+            className="h-10 w-auto md:h-12"
+          />
         </Link>
       </div>
       {index && (

@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import { Toaster } from "@/components/ui/sonner";
 import { Navigation } from "@/components/navigation";
+import { Toaster } from "@/components/ui/sonner";
 
 const cabinetGrotesk = localFont({
   src: "../../public/fonts/CabinetGrotesk/CabinetGrotesk-Variable.woff2",

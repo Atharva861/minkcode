@@ -85,11 +85,21 @@ export function SiteFooter() {
         viewport={{ once: true, margin: "-20%" }}
         transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
         aria-hidden
-        className="select-none overflow-hidden px-2 pb-4 md:px-4"
+        className="select-none overflow-hidden pb-4"
       >
-        <h2 className="font-display font-semibold leading-[0.85] tracking-[-0.06em] text-[clamp(6rem,23vw,26rem)]">
-          minkcode
-        </h2>
+        <div
+          className="w-[108%] -ml-[4%] md:w-[110%] md:-ml-[5%]"
+          style={{
+            maskImage: "url('/logo/logo-horizontal.svg')",
+            WebkitMaskImage: "url('/logo/logo-horizontal.svg')",
+            maskSize: "100% 100%",
+            WebkitMaskSize: "100% 100%",
+            maskRepeat: "no-repeat",
+            WebkitMaskRepeat: "no-repeat",
+            backgroundColor: "#FFF9E8",
+            aspectRatio: "1500 / 375",
+          }}
+        />
       </motion.div>
 
       <div className="flex flex-wrap items-center justify-between gap-2 border-t border-primary-foreground/20 px-6 py-4 text-xs uppercase tracking-[0.2em] opacity-70 md:px-10 lg:px-14">
