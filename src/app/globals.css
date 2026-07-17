@@ -37,7 +37,7 @@
   --color-ring: var(--ring);
   --color-ring-offset-background: var(--background);
 
-  --color-buttermilk: #FFF9E8;
+  --color-buttermilk: #fff9e8;
   --color-midblue: #285ccc;
   --color-ink: #0a0a0a;
 
@@ -59,16 +59,16 @@
 :root {
   --radius: 0.75rem;
 
-  --background: #FFF9E8;
+  --background: #fff9e8;
   --foreground: #285ccc;
 
-  --card: #FFF9E8;
+  --card: #fff9e8;
   --card-foreground: #285ccc;
-  --popover: #FFF9E8;
+  --popover: #fff9e8;
   --popover-foreground: #285ccc;
 
   --primary: #285ccc;
-  --primary-foreground: #FFF9E8;
+  --primary-foreground: #fff9e8;
 
   --secondary: #ffe58a;
   --secondary-foreground: #285ccc;
@@ -77,25 +77,25 @@
   --muted-foreground: #285ccc99;
 
   --accent: #285ccc;
-  --accent-foreground: #FFF9E8;
+  --accent-foreground: #fff9e8;
 
   --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: #FFF9E8;
+  --destructive-foreground: #fff9e8;
 
   --border: #285ccc33;
   --input: #285ccc33;
   --ring: #285ccc;
 
   --chart-1: #285ccc;
-  --chart-2: #FFF9E8;
+  --chart-2: #fff9e8;
   --chart-3: #0a0a0a;
   --chart-4: #ffe58a;
   --chart-5: #1e46a0;
 
-  --sidebar: #FFF9E8;
+  --sidebar: #fff9e8;
   --sidebar-foreground: #285ccc;
   --sidebar-primary: #285ccc;
-  --sidebar-primary-foreground: #FFF9E8;
+  --sidebar-primary-foreground: #fff9e8;
   --sidebar-accent: #ffe58a;
   --sidebar-accent-foreground: #285ccc;
   --sidebar-border: #285ccc33;
@@ -140,39 +140,14 @@ body[data-menu-open="true"] .page-index-label {
   transform: translateY(40px);
 }
 
-/* ── Scrollbar (desktop only) ───────────────────────────────────────────── */
-@media (min-width: 1024px) {
-  ::-webkit-scrollbar {
-    width: 10px;
-  }
-
-  ::-webkit-scrollbar-track {
-    background: transparent;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background: #2F5FD5;
-    border-radius: 999px;
-  }
-
-  ::-webkit-scrollbar-thumb:hover {
-    background: #2451c4;
-  }
-
-  /* Firefox */
-  * {
-    scrollbar-width: thin;
-    scrollbar-color: #2F5FD5 transparent;
-  }
+/* ── Scrollbar ──────────────────────────────────────────────────────────
+   Native scrollbar is fully hidden; <CustomScrollbar /> renders the
+   visible/draggable thumb instead. */
+html {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
-/* Mobile / tablet: hide scrollbar entirely */
-@media (max-width: 1023px) {
-  * {
-    scrollbar-width: none;
-  }
-
-  ::-webkit-scrollbar {
-    display: none;
-  }
+::-webkit-scrollbar {
+  display: none;
 }

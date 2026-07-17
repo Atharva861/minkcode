@@ -7,10 +7,9 @@ import { SiteFooter } from "./site-footer";
 
 interface Props {
   children: ReactNode;
-  index?: string;
 }
 
-export function PageShell({ children, index }: Props) {
+export function PageShell({ children }: Props) {
   return (
     <motion.main
       initial={{ opacity: 0, y: 8 }}
@@ -28,13 +27,6 @@ export function PageShell({ children, index }: Props) {
           />
         </Link>
       </div>
-      {index && (
-        <span
-          className="page-index-label fixed right-6 top-[8rem] z-[100] text-xs uppercase tracking-[0.2em] opacity-60 transition-transform duration-300 ease-[cubic-bezier(0.65,0,0.35,1)] md:right-10 md:top-[8.5rem] lg:right-14"
-        >
-          [{index} / Index]
-        </span>
-      )}
       {children}
       <SiteFooter />
     </motion.main>

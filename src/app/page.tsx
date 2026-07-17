@@ -31,7 +31,7 @@ const selectedWork = [
 
 export default function Index() {
   return (
-    <PageShell index="001">
+    <PageShell>
       {/* Hero */}
       <section className="relative flex min-h-[92vh] w-full flex-col justify-center px-6 pt-24 md:px-10 md:pt-32 lg:px-14">
         <motion.div
@@ -56,10 +56,15 @@ export default function Index() {
           <motion.span
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
+            transition={{
+              duration: 0.9,
+              delay: 0.25,
+              ease: [0.22, 1, 0.36, 1],
+            }}
             className="block"
           >
-            digital <span className="italic font-normal opacity-60">experiences.</span>
+            digital{" "}
+            <span className="italic font-normal opacity-60">experiences.</span>
           </motion.span>
         </h1>
 
@@ -85,7 +90,9 @@ export default function Index() {
             className="group inline-flex items-center gap-2 rounded-full bg-primary px-7 py-4 text-sm font-medium text-primary-foreground transition-transform hover:-translate-y-0.5"
           >
             Get in touch
-            <span className="transition-transform group-hover:translate-x-1">→</span>
+            <span className="transition-transform group-hover:translate-x-1">
+              →
+            </span>
           </Link>
           <Link
             href="/work"
@@ -178,7 +185,9 @@ export default function Index() {
               <span className="font-display text-3xl font-medium transition-transform duration-500 group-hover:translate-x-4 md:text-5xl lg:text-6xl">
                 {s.t}
               </span>
-              <span className="ml-auto opacity-0 transition-opacity group-hover:opacity-100">→</span>
+              <span className="ml-auto opacity-0 transition-opacity group-hover:opacity-100">
+                →
+              </span>
             </Link>
           ))}
         </div>
@@ -188,7 +197,8 @@ export default function Index() {
       <section className="w-full px-6 py-24 md:px-10 md:py-32 lg:px-14">
         <div className="mx-auto max-w-5xl text-center">
           <h2 className="font-display text-5xl font-semibold leading-[0.95] md:text-8xl">
-            Have a project<br />
+            Have a project
+            <br />
             <span className="italic font-normal opacity-60">in mind?</span>
           </h2>
           <Link

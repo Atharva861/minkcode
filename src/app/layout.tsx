@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { Navigation } from "@/components/navigation";
 import { Toaster } from "@/components/ui/sonner";
+import { CustomScrollbar } from "@/components/custom-scrollbar";
 
 const cabinetGrotesk = localFont({
   src: "../../public/fonts/CabinetGrotesk/CabinetGrotesk-Variable.woff2",
@@ -13,18 +14,18 @@ const cabinetGrotesk = localFont({
 
 export const metadata: Metadata = {
   title: "Minkcode — Web development studio",
-  description: "Minkcode is a boutique web development studio designing, building, and deploying digital products from scratch.",
+  description:
+    "Minkcode is a boutique web development studio designing, building, and deploying digital products from scratch.",
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={cabinetGrotesk.variable}>
       <body>
         <Navigation />
+        <CustomScrollbar />
         {children}
         <Toaster />
       </body>
