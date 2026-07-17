@@ -34,15 +34,7 @@ export default function Index() {
     <PageShell>
       {/* Hero */}
       <section className="relative flex min-h-[92vh] w-full flex-col justify-center px-6 pt-24 md:px-10 md:pt-32 lg:px-14">
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="mb-10 flex items-center gap-3 text-xs uppercase tracking-[0.25em] opacity-70"
-        >
-          <span className="h-px w-10 bg-primary" />
-          Studio · Est. 2024
-        </motion.div>
+
 
         <h1 className="font-display text-[13vw] font-semibold leading-[0.9] tracking-[-0.03em] md:text-[9.5vw] lg:text-[8.5vw]">
           <motion.span

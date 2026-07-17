@@ -34,7 +34,7 @@ export function FullPageMenu({ open, onClose }: Props) {
           animate={{ clipPath: "circle(150% at var(--menu-origin-x, 100%) var(--menu-origin-y, 0%))" }}
           exit={{ clipPath: "circle(0% at var(--menu-origin-x, 100%) var(--menu-origin-y, 0%))" }}
           transition={{ duration: 0.7, ease: [0.76, 0, 0.24, 1] }}
-          className="fixed inset-0 z-[90] flex flex-col bg-primary text-primary-foreground [--menu-origin-x:calc(100%-52px)] [--menu-origin-y:52px] md:[--menu-origin-x:calc(100%-68px)] md:[--menu-origin-y:60px] lg:[--menu-origin-x:calc(100%-84px)] lg:[--menu-origin-y:60px]"
+          className="fixed inset-0 z-[90] flex flex-col bg-primary text-primary-foreground [--menu-origin-x:calc(100%-40px)] [--menu-origin-y:44px] md:[--menu-origin-x:calc(100%-58px)] md:[--menu-origin-y:56px] lg:[--menu-origin-x:calc(100%-74px)] lg:[--menu-origin-y:56px]"
         >
           <div className="flex items-center justify-between px-6 pt-6 md:px-10 md:pt-8 lg:px-14">
             <Link
@@ -81,43 +81,7 @@ export function FullPageMenu({ open, onClose }: Props) {
             ))}
           </nav>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0 }}
-            transition={{ delay: 0.6, duration: 0.5 }}
-            className="grid grid-cols-2 gap-6 px-6 pb-8 text-sm md:grid-cols-4 md:px-10 md:pb-10 lg:px-14"
-          >
-            <div>
-              <p className="mb-2 text-xs uppercase tracking-widest opacity-60">
-                Reach out
-              </p>
-              <a href="mailto:hello@minkcode.studio" className="hover:opacity-70">
-                hello@minkcode.studio
-              </a>
-            </div>
-            <div>
-              <p className="mb-2 text-xs uppercase tracking-widest opacity-60">
-                Social
-              </p>
-              <div className="flex flex-col gap-1">
-                <a href="#" className="hover:opacity-70">Instagram</a>
-                <a href="#" className="hover:opacity-70">LinkedIn</a>
-                <a href="#" className="hover:opacity-70">GitHub</a>
-              </div>
-            </div>
-            <div>
-              <p className="mb-2 text-xs uppercase tracking-widest opacity-60">
-                Studio
-              </p>
-              <p>Remote · Worldwide</p>
-            </div>
-            <div className="text-right">
-              <p className="text-xs uppercase tracking-widest opacity-60">
-                © 2026 Minkcode
-              </p>
-            </div>
-          </motion.div>
+
         </motion.div>
       )}
     </AnimatePresence>

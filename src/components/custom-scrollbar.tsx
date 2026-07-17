@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState, useCallback } from "react";
 
-const THUMB_W = 5; // px
+const THUMB_W = 8; // px
 const MIN_H = 40; // px
 
 export function CustomScrollbar() {
@@ -105,11 +105,11 @@ export function CustomScrollbar() {
         onPointerDown={onThumbPointerDown}
         style={{
           position: "absolute",
-          right: 4,
+          right: 0,
           top: thumbTop,
           width: THUMB_W,
           height: thumbHeight,
-          borderRadius: 9999,
+          borderRadius: 0,
           backgroundColor: "var(--color-primary, #285ccc)",
           touchAction: "none",
         }}
