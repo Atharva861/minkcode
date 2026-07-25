@@ -7,7 +7,7 @@ interface Props {
   onClick: () => void;
 }
 
-const lineTransition = { duration: 0.3, ease: [0.65, 0, 0.35, 1] };
+const lineTransition = { duration: 0.3, ease: [0.65, 0, 0.35, 1] as const };
 
 export function HamburgerButton({ open, onClick }: Props) {
   return (

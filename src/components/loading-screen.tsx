@@ -67,16 +67,9 @@ export function LoadingScreen() {
       });
 
       /* Phase 2 — Hold so the brand registers */
-      tl.to({}, { duration: 1 });
+      tl.to({}, { duration: 0.8 });
 
-      /* Phase 3 — Fade out every letter except the dot */
-      tl.to("#logo-body", {
-        opacity: 0,
-        duration: 0.5,
-        ease: "power2.inOut",
-      });
-
-      /* Phase 4 — Locate the dot's actual screen position, then setup the square clip-path mask on the root container. */
+      /* Phase 3 — Locate the dot's actual screen position, then setup the square clip-path mask on the root container. */
       tl.add(() => {
         const dotEl = dotRef.current;
         const root = rootRef.current;
@@ -107,12 +100,9 @@ export function LoadingScreen() {
         const x2 = cx + startR;
         const y2 = cy + startR;
         root.style.clipPath = `polygon(evenodd, 0px 0px, 100% 0px, 100% 100%, 0px 100%, 0px 0px, ${x1}px ${y1}px, ${x1}px ${y2}px, ${x2}px ${y2}px, ${x2}px ${y1}px, ${x1}px ${y1}px)`;
-
-        // Hide the SVG dot
-        dotEl.style.opacity = "0";
       });
 
-      /* Phase 5 — Expand the square cutout until it covers the full viewport. */
+      /* Phase 4 — Expand the square cutout until it covers the full viewport. */
       tl.to(
         rootRef,
         {
