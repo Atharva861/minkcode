@@ -60,7 +60,7 @@ export default function ContactPage() {
     "w-full border-b border-primary/30 bg-transparent py-4 text-lg outline-none placeholder:text-primary/40 focus:border-primary transition-colors";
 
   return (
-    <PageShell index="005">
+    <PageShell>
       <section className="px-6 pt-20 pb-16 md:px-10 md:pt-28 md:pb-20 lg:px-14">
         <p className="mb-6 flex items-center gap-3 text-xs uppercase tracking-[0.25em] opacity-70">
           <span className="h-px w-10 bg-primary" /> Contact

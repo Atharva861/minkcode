@@ -41,7 +41,7 @@ const stack = [
 
 export default function AboutPage() {
   return (
-    <PageShell index="004">
+    <PageShell>
       <section className="px-6 pt-20 pb-20 md:px-10 md:pt-28 md:pb-28 lg:px-14">
         <p className="mb-6 flex items-center gap-3 text-xs uppercase tracking-[0.25em] opacity-70">
           <span className="h-px w-10 bg-primary" /> About the studio
