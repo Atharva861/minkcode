@@ -64,7 +64,7 @@ export default function Index() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.5 }}
-          className="ml-auto mt-16 max-w-md text-base leading-relaxed opacity-80 md:text-lg"
+          className="mt-12 max-w-xl text-base leading-relaxed opacity-80 md:mt-16 md:text-lg"
         >
           Minkcode is a boutique software studio crafting high-performance web
           experiences for brands that demand better. Design, development,
@@ -75,7 +75,7 @@ export default function Index() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.7 }}
-          className="mt-12 flex flex-wrap gap-3"
+          className="mt-16 flex flex-wrap gap-3 md:mt-20"
         >
           <Link
             href="/contact"
