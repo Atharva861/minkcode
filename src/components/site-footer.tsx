@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { ArrowUp } from "lucide-react";
 
 export function SiteFooter() {
   return (
@@ -59,25 +60,6 @@ export function SiteFooter() {
         </div>
       </div>
 
-      <div className="flex items-end justify-between gap-6 border-t border-primary-foreground/20 px-6 py-6 md:px-10 lg:px-14">
-        <form
-          onSubmit={(e) => e.preventDefault()}
-          className="flex w-full max-w-md items-center gap-3 border-b border-primary-foreground/30 pb-2"
-        >
-          <label className="text-xs uppercase tracking-[0.2em] opacity-60">
-            Newsletter
-          </label>
-          <input
-            type="email"
-            placeholder="your@email.com"
-            className="flex-1 bg-transparent text-sm outline-none placeholder:text-primary-foreground/40"
-          />
-          <button className="text-xl transition-transform hover:translate-x-1">→</button>
-        </form>
-        <p className="hidden text-xs uppercase tracking-[0.2em] opacity-60 md:block">
-          Est. 2024 · Built with intent
-        </p>
-      </div>
 
       <motion.div
         initial={{ y: 40, opacity: 0 }}
@@ -102,9 +84,20 @@ export function SiteFooter() {
         />
       </motion.div>
 
-      <div className="flex flex-wrap items-center justify-between gap-2 border-t border-primary-foreground/20 px-6 py-4 text-xs uppercase tracking-[0.2em] opacity-70 md:px-10 lg:px-14">
+      <div className="flex flex-wrap items-center justify-between gap-2 border-t border-primary-foreground/20 px-6 py-4 text-xs uppercase tracking-[0.2em] text-primary-foreground/70 md:px-10 lg:px-14">
         <span>© Minkcode 2026</span>
-        <span>Site credits / Privacy / ↑ Up</span>
+        <div className="flex items-center gap-1.5">
+          <span>Site credits / Privacy /</span>
+          <button
+            type="button"
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            className="inline-flex items-center gap-1 cursor-pointer transition-colors hover:text-primary-foreground"
+            aria-label="Scroll to top"
+          >
+            <ArrowUp className="h-3 w-3 -translate-y-px" strokeWidth={2.5} />
+            <span>UP</span>
+          </button>
+        </div>
       </div>
     </footer>
   );

@@ -92,6 +92,7 @@ export function CustomScrollbar() {
     <div
       aria-hidden
       data-custom-scrollbar
+      className="hidden md:block"
       style={{
         position: "fixed",
         right: 0,

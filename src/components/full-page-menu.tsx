@@ -70,11 +70,16 @@ export function FullPageMenu({ open, onClose }: Props) {
                   onClick={onClose}
                   className="group flex items-baseline gap-4 border-b border-primary-foreground/15 py-4 md:py-6"
                 >
-                  <span className="w-10 text-xs opacity-50 md:w-14 md:text-sm">
+                  <span className="w-10 text-xs opacity-50 transition-opacity duration-500 group-hover:opacity-100 md:w-14 md:text-sm">
                     [{link.num}]
                   </span>
-                  <span className="font-display text-[16vw] leading-[0.95] tracking-tight transition-transform duration-500 group-hover:translate-x-3 md:text-[min(11vw,15vh)]">
-                    {link.label}
+                  <span className="relative block overflow-hidden pr-2 font-display text-[16vw] leading-[0.95] tracking-tight md:text-[min(11vw,15vh)]">
+                    <span className="block transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-full">
+                      {link.label}
+                    </span>
+                    <span className="absolute left-0 top-full block transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-full">
+                      {link.label}
+                    </span>
                   </span>
                 </Link>
               </motion.div>
