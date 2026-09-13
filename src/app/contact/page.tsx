@@ -333,13 +333,10 @@ export default function ContactPage() {
   return (
     <PageShell>
       <section className="px-6 pt-20 pb-16 md:px-10 md:pt-28 md:pb-20 lg:px-14 max-w-full overflow-hidden">
-        <p className="mb-6 flex items-center gap-3 text-xs uppercase tracking-[0.25em] opacity-70">
-          <span className="h-px w-10 bg-primary" /> Contact
-        </p>
         <h1 className="font-display text-[11vw] font-semibold leading-[0.9] tracking-[-0.03em] md:text-[7vw]">
-          Let&apos;s build
+          Have an idea?
           <br />
-          <span className="italic font-normal opacity-60">something good.</span>
+          Let’s <span className="font-normal opacity-60">talk.</span>
         </h1>
       </section>
 

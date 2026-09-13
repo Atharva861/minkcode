@@ -7,25 +7,34 @@ import { MarqueeTech } from "../components/marquee-tech";
 
 const selectedWork = [
   {
-    title: "Northwind Ceramics",
-    tag: "E-commerce",
+    title: "AZ Partners",
+    tag: "Web Development",
     year: "2025",
-    prompt:
-      "Editorial ceramic studio product photography, warm beige backdrop, cream pottery, soft daylight, minimal composition",
+    description: "Sourcing & procurement specialists connecting local businesses with trusted global suppliers.",
+    href: "/work/az-partners",
+    external: false,
+    img: "/projects/azpartners/azp.webp",
+    imgMobile: "/projects/azpartners/azp_pt.webp",
   },
   {
-    title: "Halcyon Finance",
-    tag: "Fintech",
+    title: "Starmed Facility Services",
+    tag: "Web Development",
     year: "2025",
-    prompt:
-      "Abstract financial dashboard render on cream background, subtle blue accents, glass and paper textures, minimal design",
+    description: "Medical, commercial & residential cleaning services in Auckland.",
+    href: "https://starmedfacilityservices.com/",
+    external: true,
+    img: "/projects/starmed.webp",
+    imgMobile: "/projects/starmed_pt.webp",
   },
   {
-    title: "Field Notes Journal",
-    tag: "Publication",
-    year: "2024",
-    prompt:
-      "Open editorial magazine spread mockup on buttermilk paper, blue accents, swiss typography, top-down flat lay",
+    title: "PS Foods & Beverages",
+    tag: "Web Development",
+    year: "2025",
+    description: "Drinking water bottled with precision and care — from Aurangabad to everyday moments.",
+    href: "https://psfnb.pages.dev/",
+    external: true,
+    img: "/projects/psfnb.png",
+    imgMobile: "/projects/psfnb_pt.png",
   },
 ];
 
@@ -56,7 +65,7 @@ export default function Index() {
             className="block"
           >
             digital{" "}
-            <span className="italic font-normal opacity-60">experiences.</span>
+            <span className=" font-normal opacity-60">experiences.</span>
           </motion.span>
         </h1>
 
@@ -134,27 +143,38 @@ export default function Index() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-15%" }}
               transition={{ duration: 0.7, delay: i * 0.1 }}
-              className="group"
+              className="group block"
             >
-              <div className="mb-4 overflow-hidden rounded-2xl bg-primary/10 aspect-[4/5]">
-                <div
-                  data-lov-image-placeholder
-                  data-prompt={p.prompt}
-                  data-width="800"
-                  data-height="1000"
-                  className="h-full w-full transition-transform duration-700 group-hover:scale-105"
-                />
-              </div>
-              <div className="flex items-baseline justify-between">
-                <h3 className="font-display text-xl font-medium">{p.title}</h3>
-                <span className="text-xs uppercase tracking-widest opacity-60">
-                  {p.year}
+              <Link
+                href={p.href}
+                {...(p.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                className="block"
+              >
+                <div className="mb-4 overflow-hidden rounded-2xl bg-primary/10 aspect-video">
+                  <picture className="h-full w-full block">
+                    <source media="(max-width: 767px)" srcSet={p.imgMobile} />
+                    <img
+                      src={p.img}
+                      alt={p.title}
+                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                  </picture>
+                </div>
+                <div className="flex items-baseline justify-between">
+                  <h3 className="font-display text-xl font-medium">{p.title}</h3>
+                  <span className="text-xs uppercase tracking-widest opacity-60">
+                    {p.year}
+                  </span>
+                </div>
+                <p className="mt-1 text-sm opacity-70">{p.description}</p>
+                <span className="mt-3 inline-block rounded-full border border-primary/30 px-3 py-1 text-xs uppercase tracking-widest opacity-70">
+                  {p.tag}
                 </span>
-              </div>
-              <p className="mt-1 text-sm opacity-70">{p.tag}</p>
+              </Link>
             </motion.div>
           ))}
         </div>
+
       </section>
 
       {/* Services teaser */}
@@ -191,7 +211,7 @@ export default function Index() {
           <h2 className="font-display text-5xl font-semibold leading-[0.95] md:text-8xl">
             Have a project
             <br />
-            <span className="italic font-normal opacity-60">in mind?</span>
+            <span className="font-normal opacity-60">in mind?</span>
           </h2>
           <Link
             href="/contact"

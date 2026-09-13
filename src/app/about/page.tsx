@@ -43,13 +43,10 @@ export default function AboutPage() {
   return (
     <PageShell>
       <section className="px-6 pt-20 pb-20 md:px-10 md:pt-28 md:pb-28 lg:px-14">
-        <p className="mb-6 flex items-center gap-3 text-xs uppercase tracking-[0.25em] opacity-70">
-          <span className="h-px w-10 bg-primary" /> About the studio
-        </p>
         <h1 className="font-display text-[11vw] font-semibold leading-[0.9] tracking-[-0.03em] md:text-[7vw]">
           A small studio
           <br />
-          <span className="italic font-normal opacity-60">with a sharp point of view.</span>
+          <span className="font-normal opacity-60">with a sharp point of view.</span>
         </h1>
         <p className="mt-12 max-w-2xl text-lg leading-relaxed opacity-80 md:text-xl">
           Minkcode is a boutique web studio. We work directly with founders and
