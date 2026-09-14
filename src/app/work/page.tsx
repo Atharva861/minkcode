@@ -13,8 +13,9 @@ const projects = [
       "Sourcing & procurement specialists connecting local businesses with trusted global suppliers.",
     href: "/work/az-partners",
     external: false,
-    img: "/projects/azpartners/azp.webp",
-    imgMobile: "/projects/azpartners/azp_pt.webp",
+    img: "/projects/azpartners/mainbg.png",
+    imgMobile: "/projects/azpartners/mainbg.png",
+    logo: "/projects/azpartners/logo.svg",
     wide: true,
   },
   {
@@ -71,21 +72,7 @@ export default function WorkPage() {
                 : {})}
               className="block"
             >
-              <div
-                className={`mb-5 overflow-hidden rounded-3xl bg-primary/10 ${
-                  p.wide ? "aspect-[16/9]" : "aspect-[4/5]"
-                }`}
-              >
-                <picture className="h-full w-full block">
-                  <source media="(max-width: 767px)" srcSet={p.imgMobile} />
-                  <img
-                    src={p.img}
-                    alt={p.title}
-                    className="h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.03]"
-                  />
-                </picture>
-              </div>
-              <div className="flex items-baseline justify-between">
+              <div className="flex items-baseline justify-between mb-3">
                 <h2 className="font-display text-2xl font-medium md:text-3xl">
                   {p.title}
                 </h2>
@@ -93,13 +80,39 @@ export default function WorkPage() {
                   {p.year}
                 </span>
               </div>
-              <p className="mt-1 text-sm opacity-70">{p.description}</p>
-              <span className="mt-3 inline-block text-xs uppercase tracking-widest opacity-50">
+              <p className="mb-2 text-sm opacity-70">{p.description}</p>
+              <span className="mb-5 inline-block text-xs uppercase tracking-widest opacity-50">
                 {p.tag}
                 {!p.external && (
                   <span className="ml-2 opacity-70">→ Case study</span>
                 )}
               </span>
+              <div
+                className={`relative overflow-hidden rounded-sm bg-primary/10 ${
+                  p.wide ? "aspect-[16/9]" : "aspect-[4/5]"
+                }`}
+              >
+                <picture className="h-full w-full block">
+                  <source media="(max-width: 767px)" srcSet={p.imgMobile} />
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={p.img}
+                    alt={p.title}
+                    className="h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.02]"
+                  />
+                </picture>
+                {"logo" in p && p.logo && (
+                  <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={(p as typeof p & { logo: string }).logo}
+                      alt={`${p.title} logo`}
+                      className="h-24 w-auto drop-shadow-[0_2px_16px_rgba(0,0,0,0.5)]"
+                      style={{ filter: "brightness(0) saturate(100%) invert(97%) sepia(19%) saturate(500%) hue-rotate(340deg) brightness(102%)" }}
+                    />
+                  </div>
+                )}
+              </div>
             </Link>
           </motion.article>
         ))}

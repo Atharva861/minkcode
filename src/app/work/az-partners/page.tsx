@@ -126,20 +126,6 @@ export default function AZPartnersPage() {
 
 
 
-      {/* ── FULL-BLEED HERO SCREENSHOT ─────────────────────────────────── */}
-      <motion.section
-        {...fadeUp(0)}
-        className="mt-20 w-full overflow-hidden"
-      >
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src="/projects/azpartners/azp.webp"
-          alt="AZ Partners — full homepage view"
-          className="h-auto w-full object-cover"
-          style={{ maxHeight: "70vh", objectPosition: "top" }}
-        />
-      </motion.section>
-
       {/* ── CHALLENGE ─────────────────────────────────────────────────── */}
       <section className="grid grid-cols-1 gap-8 px-6 pt-24 pb-0 md:grid-cols-2 md:gap-16 md:px-10 md:pt-32 lg:px-14">
         <motion.div {...fadeUp(0)}>
@@ -310,9 +296,9 @@ export default function AZPartnersPage() {
           className="mx-auto max-w-4xl text-center"
         >
           <p className="font-display text-2xl font-medium leading-[1.35] tracking-[-0.02em] opacity-90 md:text-3xl lg:text-4xl">
-            &ldquo;I worked with Atharva on the websites for two of the
-            companies I was associated with — and he delivered on both, start to
-            finish. What stood out most was how little he needed chasing. He
+            &ldquo;I worked with minkcode on the websites for two of the
+            companies I was associated with — and they delivered on both, start to
+            finish. What stood out most was how little they needed chasing. They
             took the time to understand what each business actually does and who
             it speaks to, then translated that into a site that looks
             professional and is easy for our customers to navigate.&rdquo;

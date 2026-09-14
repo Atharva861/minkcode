@@ -13,8 +13,9 @@ const selectedWork = [
     description: "Sourcing & procurement specialists connecting local businesses with trusted global suppliers.",
     href: "/work/az-partners",
     external: false,
-    img: "/projects/azpartners/azp.webp",
-    imgMobile: "/projects/azpartners/azp_pt.webp",
+    img: "/projects/azpartners/mainbg.png",
+    imgMobile: "/projects/azpartners/mainbg.png",
+    logo: "/projects/azpartners/logo.svg",
   },
   {
     title: "Starmed Facility Services",
@@ -150,15 +151,27 @@ export default function Index() {
                 {...(p.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                 className="block"
               >
-                <div className="mb-4 overflow-hidden rounded-2xl bg-primary/10 aspect-video">
+                <div className="relative mb-4 overflow-hidden rounded-sm bg-primary/10 aspect-video">
                   <picture className="h-full w-full block">
                     <source media="(max-width: 767px)" srcSet={p.imgMobile} />
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={p.img}
                       alt={p.title}
-                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.02]"
                     />
                   </picture>
+                  {"logo" in p && p.logo && (
+                    <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={(p as typeof p & { logo: string }).logo}
+                        alt={`${p.title} logo`}
+                        className="h-24 w-auto drop-shadow-[0_2px_16px_rgba(0,0,0,0.5)]"
+                        style={{ filter: "brightness(0) saturate(100%) invert(97%) sepia(19%) saturate(500%) hue-rotate(340deg) brightness(102%)" }}
+                      />
+                    </div>
+                  )}
                 </div>
                 <div className="flex items-baseline justify-between">
                   <h3 className="font-display text-xl font-medium">{p.title}</h3>
