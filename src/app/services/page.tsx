@@ -53,7 +53,7 @@ export default function ServicesPage() {
         <h1 className="font-display text-[11vw] font-semibold leading-[0.9] tracking-[-0.03em] md:text-[7vw]">
           What we do,
           <br />
-          <span className="italic font-normal opacity-60">and how.</span>
+          <span className="font-normal opacity-60">and how.</span>
         </h1>
       </section>
 

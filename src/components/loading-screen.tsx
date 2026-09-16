@@ -44,22 +44,31 @@ const BG_COLOR = BLUE;
 export function LoadingScreen() {
   const [isDone, setIsDone] = useState(false);
   const rootRef = useRef<HTMLDivElement>(null);
+  const svgRef = useRef<SVGSVGElement>(null);
+  const logoBodyRef = useRef<SVGGElement>(null);
   const dotRef = useRef<SVGGElement>(null);
 
   useEffect(() => {
     document.body.style.overflow = "hidden";
 
+    let cx = window.innerWidth / 2;
+    let cy = window.innerHeight / 2;
+    let startW = 16;
+    let startH = 16;
+    let targetW = window.innerWidth * 1.35;
+    let targetH = window.innerHeight * 1.35;
+
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({
-        defaults: { ease: "power2.out" },
         onComplete: () => {
+          gsap.set("main", { clearProps: "transform,transformOrigin" });
           document.body.style.overflow = "";
           setIsDone(true);
         },
       });
 
       /* Phase 1 — Logo entrance: fade in + rise */
-      tl.to("#logo-svg", {
+      tl.to(svgRef.current, {
         opacity: 1,
         y: 0,
         duration: 0.7,
@@ -67,67 +76,111 @@ export function LoadingScreen() {
       });
 
       /* Phase 2 — Hold so the brand registers */
-      tl.to({}, { duration: 0.8 });
+      tl.to({}, { duration: 0.5 });
 
-      /* Phase 3 — Locate the dot's actual screen position, then setup the square clip-path mask on the root container. */
+      /* Phase 3 — Before moving the dot, all other characters cleanly disappear */
+      tl.to(logoBodyRef.current, {
+        opacity: 0,
+        duration: 0.32,
+        ease: "power2.inOut",
+      });
+
+      /* Phase 4 — Dot glides smoothly to the dead center of the loading screen while slightly scaling up */
+      tl.to(
+        dotRef.current,
+        {
+          x: () => {
+            const dotEl = dotRef.current;
+            const svg = svgRef.current;
+            if (!dotEl || !svg) return 380.2424;
+            const rect = dotEl.getBoundingClientRect();
+            const screenDx = window.innerWidth / 2 - (rect.left + rect.width / 2);
+            const ctm = svg.getScreenCTM();
+            return screenDx / (ctm ? ctm.a : 1);
+          },
+          y: () => {
+            const dotEl = dotRef.current;
+            const svg = svgRef.current;
+            if (!dotEl || !svg) return 98.9263;
+            const rect = dotEl.getBoundingClientRect();
+            const screenDy = window.innerHeight / 2 - (rect.top + rect.height / 2);
+            const ctm = svg.getScreenCTM();
+            return screenDy / (ctm ? ctm.d : 1);
+          },
+          scale: 6.5,
+          transformOrigin: "center center",
+          duration: 0.6,
+          ease: "power3.inOut",
+        },
+        "-=0.08"
+      );
+
+      /* Phase 4b — Brief settle pause at center so user registers the centered dot */
+      tl.to({}, { duration: 0.15 });
+
+      /* Phase 5 — Aperture Zoom: Initialize cutout at exact dot bounds and expand smoothly */
       tl.add(() => {
         const dotEl = dotRef.current;
         const root = rootRef.current;
         if (!dotEl || !root) return;
 
         const rect = dotEl.getBoundingClientRect();
-        const cx = rect.left + rect.width / 2;
-        const cy = rect.top + rect.height / 2;
+        cx = rect.left + rect.width / 2;
+        cy = rect.top + rect.height / 2;
+        startW = rect.width;
+        startH = rect.height;
 
-        // Largest distance from the dot to any viewport corner along either axis —
-        // guarantees full coverage as a square.
         const vw = window.innerWidth;
         const vh = window.innerHeight;
-        const maxR = Math.ceil(
-          Math.max(cx, vw - cx, cy, vh - cy)
-        );
+        // 1.5x guarantees all 4 edges clear the screen simultaneously and completely
+        targetW = vw * 1.5;
+        targetH = vh * 1.5;
 
-        root.style.setProperty("--dot-cx", `${cx}px`);
-        root.style.setProperty("--dot-cy", `${cy}px`);
-        root.style.setProperty("--max-r", `${maxR}px`);
+        // Hide dot so the aperture cutout seamlessly takes its place
+        dotEl.style.opacity = "0";
 
-        const startR = Math.max(rect.width, rect.height) / 2;
-        root.style.setProperty("--start-r", `${startR}px`);
-
-        // Initialize clip-path with a square cutout at the dot location
-        const x1 = cx - startR;
-        const y1 = cy - startR;
-        const x2 = cx + startR;
-        const y2 = cy + startR;
+        // Initialize clip-path cutout matching the centered square dot
+        const x1 = cx - startW / 2;
+        const y1 = cy - startH / 2;
+        const x2 = cx + startW / 2;
+        const y2 = cy + startH / 2;
         root.style.clipPath = `polygon(evenodd, 0px 0px, 100% 0px, 100% 100%, 0px 100%, 0px 0px, ${x1}px ${y1}px, ${x1}px ${y2}px, ${x2}px ${y2}px, ${x2}px ${y1}px, ${x1}px ${y1}px)`;
+
+        // Website zooms in smoothly from behind the dot
+        const mainEl = document.querySelector("main");
+        if (mainEl) {
+          gsap.fromTo(
+            mainEl,
+            { scale: 0.94, transformOrigin: "center center" },
+            { scale: 1, duration: 1.25, ease: "power3.out" }
+          );
+        }
       });
 
-      /* Phase 4 — Expand the square cutout until it covers the full viewport. */
+      /* Cutout expands outward in screen aspect ratio, clearing all edges simultaneously */
+      const progressObj = { p: 0 };
       tl.to(
-        rootRef,
+        progressObj,
         {
-          duration: 1.5,
-          ease: "power2.inOut",
-          onUpdate: function () {
+          p: 1,
+          duration: 1.25,
+          ease: "power4.inOut",
+          onUpdate: () => {
             const root = rootRef.current;
             if (!root) return;
-            const progress = this.progress();
+            const progress = progressObj.p;
+            const curW = startW + (targetW - startW) * progress;
+            const curH = startH + (targetH - startH) * progress;
 
-            const cx = parseFloat(root.style.getPropertyValue("--dot-cx") || "0");
-            const cy = parseFloat(root.style.getPropertyValue("--dot-cy") || "0");
-            const maxR = parseFloat(root.style.getPropertyValue("--max-r") || "0");
-            const startR = parseFloat(root.style.getPropertyValue("--start-r") || "0");
+            const px1 = cx - curW / 2;
+            const py1 = cy - curH / 2;
+            const px2 = cx + curW / 2;
+            const py2 = cy + curH / 2;
 
-            const r = startR + (maxR - startR) * progress;
-            const x1 = cx - r;
-            const y1 = cy - r;
-            const x2 = cx + r;
-            const y2 = cy + r;
-
-            root.style.clipPath = `polygon(evenodd, 0px 0px, 100% 0px, 100% 100%, 0px 100%, 0px 0px, ${x1}px ${y1}px, ${x1}px ${y2}px, ${x2}px ${y2}px, ${x2}px ${y1}px, ${x1}px ${y1}px)`;
+            root.style.clipPath = `polygon(evenodd, 0px 0px, 100% 0px, 100% 100%, 0px 100%, 0px 0px, ${px1}px ${py1}px, ${px1}px ${py2}px, ${px2}px ${py2}px, ${px2}px ${py1}px, ${px1}px ${py1}px)`;
           },
         },
-        ">-0.05"
+        "<"
       );
     }, rootRef);
 
@@ -155,6 +208,7 @@ export function LoadingScreen() {
     >
       <svg
         id="logo-svg"
+        ref={svgRef}
         viewBox="0 0 1500 375"
         xmlns="http://www.w3.org/2000/svg"
         style={{
@@ -165,7 +219,7 @@ export function LoadingScreen() {
         }}
       >
         {/* All letters & brackets EXCEPT the "i" dot */}
-        <g id="logo-body">
+        <g id="logo-body" ref={logoBodyRef}>
           <g transform={TX.m} fill={LOGO_COLOR}>
             <path d={PATHS.m} />
           </g>
@@ -195,7 +249,7 @@ export function LoadingScreen() {
           </g>
         </g>
 
-        {/* "i" dot — visible until the mask takes over */}
+        {/* "i" dot — isolated for translation and zoom */}
         <g transform={TX.i} fill={LOGO_COLOR}>
           <g ref={dotRef}>
             <path d={PATHS.iDot} />

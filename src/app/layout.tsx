@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { Navigation } from "@/components/navigation";
+import { PageTransition } from "@/components/page-transition";
 import { Toaster } from "@/components/ui/sonner";
 import { CustomScrollbar } from "@/components/custom-scrollbar";
 import { LoadingScreen } from "@/components/loading-screen";
@@ -26,6 +27,7 @@ export default function RootLayout({
     <html lang="en" className={cabinetGrotesk.variable}>
       <body>
         <LoadingScreen />
+        <PageTransition />
         <Navigation />
         <CustomScrollbar />
         {children}

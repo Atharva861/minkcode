@@ -115,6 +115,8 @@
     font-feature-settings: "ss01", "cv11";
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+    max-width: 100%;
   }
 
   h1,
@@ -151,3 +153,55 @@ html {
 ::-webkit-scrollbar {
   display: none;
 }
+
+/* ── Bou-Style Wavefront View Transition ────────────────────────────── */
+@property --wt-wipe {
+  syntax: "<percentage>";
+  initial-value: 0%;
+  inherits: false;
+}
+
+@keyframes wt-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes wt-wipe-in {
+  from {
+    --wt-wipe: 0%;
+  }
+  to {
+    --wt-wipe: 200%;
+  }
+}
+
+::view-transition-old(root) {
+  animation: none;
+}
+
+::view-transition-new(root) {
+  --wt-wipe: 0%;
+  -webkit-mask-image: radial-gradient(ellipse var(--wt-wipe) 165% at -8% 50%, #000 65%, transparent 100%);
+  mask-image: radial-gradient(ellipse var(--wt-wipe) 165% at -8% 50%, #000 65%, transparent 100%);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  animation: wt-wipe-in 500ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+:root[data-transition-back="true"]::view-transition-new(root) {
+  -webkit-mask-image: radial-gradient(ellipse var(--wt-wipe) 165% at 108% 50%, #000 65%, transparent 100%);
+  mask-image: radial-gradient(ellipse var(--wt-wipe) 165% at 108% 50%, #000 65%, transparent 100%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-new(root) {
+    -webkit-mask-image: none;
+    mask-image: none;
+    animation: wt-fade-in 200ms ease-out both;
+  }
+}
+

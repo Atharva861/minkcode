@@ -26,20 +26,29 @@ export function FullPageMenu({ open, onClose }: Props) {
     };
   }, [open]);
 
+  const handleNavClick = () => {
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+    onClose();
+  };
+
   return (
     <AnimatePresence>
       {open && (
         <motion.div
+          data-full-page-menu
           initial={{ clipPath: "circle(0% at var(--menu-origin-x, 100%) var(--menu-origin-y, 0%))" }}
           animate={{ clipPath: "circle(150% at var(--menu-origin-x, 100%) var(--menu-origin-y, 0%))" }}
-          exit={{ clipPath: "circle(0% at var(--menu-origin-x, 100%) var(--menu-origin-y, 0%))" }}
+          exit={{
+            clipPath: "circle(0% at var(--menu-origin-x, 100%) var(--menu-origin-y, 0%))",
+            pointerEvents: "none",
+          }}
           transition={{ duration: 0.7, ease: [0.76, 0, 0.24, 1] }}
           className="fixed inset-0 z-[90] flex flex-col bg-primary text-primary-foreground [--menu-origin-x:calc(100%-40px)] [--menu-origin-y:44px] md:[--menu-origin-x:calc(100%-58px)] md:[--menu-origin-y:56px] lg:[--menu-origin-x:calc(100%-74px)] lg:[--menu-origin-y:56px]"
         >
           <div className="flex items-center justify-between px-6 pt-6 md:px-10 md:pt-8 lg:px-14">
             <Link
               href="/"
-              onClick={onClose}
+              onClick={handleNavClick}
               className="block"
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -67,14 +76,19 @@ export function FullPageMenu({ open, onClose }: Props) {
               >
                 <Link
                   href={link.to}
-                  onClick={onClose}
+                  onClick={handleNavClick}
                   className="group flex items-baseline gap-4 border-b border-primary-foreground/15 py-4 md:py-6"
                 >
-                  <span className="w-10 text-xs opacity-50 md:w-14 md:text-sm">
+                  <span className="w-10 text-xs opacity-50 transition-opacity duration-500 group-hover:opacity-100 md:w-14 md:text-sm">
                     [{link.num}]
                   </span>
-                  <span className="font-display text-[16vw] leading-[0.95] tracking-tight transition-transform duration-500 group-hover:translate-x-3 md:text-[min(11vw,15vh)]">
-                    {link.label}
+                  <span className="relative block overflow-hidden pr-2 font-display text-[16vw] leading-[0.95] tracking-tight md:text-[min(11vw,15vh)]">
+                    <span className="block transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-full">
+                      {link.label}
+                    </span>
+                    <span className="absolute left-0 top-full block transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-full">
+                      {link.label}
+                    </span>
                   </span>
                 </Link>
               </motion.div>
