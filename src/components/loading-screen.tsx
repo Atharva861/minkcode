@@ -257,5 +257,4 @@ export function LoadingScreen() {
         </g>
       </svg>
     </div>
-  );
-}
+  );}

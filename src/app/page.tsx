@@ -20,6 +20,20 @@ const selectedWork = [
     logoSize: "max-w-[55%] max-h-[40%]",
   },
   {
+    title: "Jungle Belles",
+    tag: "Digital Marketing · Social Media",
+    year: "2025",
+    description: "Complete social media management, brand storytelling, and visual campaigns for women-only luxury wildlife expeditions.",
+    href: "/work/jungle-belles",
+    external: false,
+    video: "/projects/JungleBelles/cardbg.mp4",
+    img: "/projects/JungleBelles/mainbg.png",
+    imgMobile: "/projects/JungleBelles/mainbg.png",
+    logo: "/projects/JungleBelles/JB.svg",
+    logoFilter: "brightness(0) invert(1)",
+    logoSize: "max-w-[65%] max-h-[58%]",
+  },
+  {
     title: "Starmed Facility Services",
     tag: "Web Development",
     year: "2025",
@@ -31,16 +45,6 @@ const selectedWork = [
     logo: "/projects/Starmed/starmedlogo.svg",
     logoFilter: "brightness(0) invert(1)",
     logoSize: "max-w-[60%] max-h-[35%]",
-  },
-  {
-    title: "PS Foods & Beverages",
-    tag: "Web Development",
-    year: "2025",
-    description: "Drinking water bottled with precision and care — from Aurangabad to everyday moments.",
-    href: "https://psfnb.pages.dev/",
-    external: true,
-    img: "/projects/psfnb.png",
-    imgMobile: "/projects/psfnb_pt.png",
   },
 ];
 
@@ -157,22 +161,37 @@ export default function Index() {
                 className="block"
               >
                 <div className="relative mb-4 overflow-hidden rounded-sm bg-primary/10 aspect-video">
-                  <picture className="h-full w-full block">
-                    <source media="(max-width: 767px)" srcSet={p.imgMobile} />
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={p.img}
-                      alt={p.title}
-                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.02]"
-                    />
-                  </picture>
+                  {"video" in p && p.video ? (
+                    <>
+                      <video
+                        src={p.video}
+                        poster={p.img}
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+                      />
+                      <div className="pointer-events-none absolute inset-0 bg-black/30 transition-opacity duration-500 group-hover:bg-black/25" />
+                    </>
+                  ) : (
+                    <picture className="h-full w-full block">
+                      <source media="(max-width: 767px)" srcSet={p.imgMobile} />
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={p.img}
+                        alt={p.title}
+                        className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+                      />
+                    </picture>
+                  )}
                   {"logo" in p && p.logo && (
                     <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img
                         src={(p as typeof p & { logo: string }).logo}
                         alt={`${p.title} logo`}
-                        className={`${ (p as typeof p & { logoSize?: string }).logoSize ?? "max-w-[50%] max-h-[40%]" } w-auto h-auto object-contain drop-shadow-[0_2px_16px_rgba(0,0,0,0.5)]`}
+                        className={`${ (p as typeof p & { logoSize?: string }).logoSize ?? "max-w-[50%] max-h-[40%]" } w-auto h-auto object-contain drop-shadow-[0_3px_20px_rgba(0,0,0,0.65)]`}
                         style={{ filter: (p as typeof p & { logoFilter?: string }).logoFilter ?? "none" }}
                       />
                     </div>
