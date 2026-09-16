@@ -352,11 +352,11 @@ export default function StarmedPage() {
               external: false,
             },
             {
-              title: "PS Foods & Beverages",
-              tag: "Web Development · 2025",
-              img: "/projects/psfnb.png",
-              url: "https://psfnb.pages.dev/",
-              external: true,
+              title: "Jungle Belles",
+              tag: "Digital Marketing · Social Media · 2025",
+              img: "/projects/JungleBelles/JB.png",
+              url: "/work/jungle-belles",
+              external: false,
             },
           ].map((p, i) => (
             <motion.div key={p.title} {...fadeUp(i * 0.1)}>
