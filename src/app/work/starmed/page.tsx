@@ -5,19 +5,18 @@ import { motion } from "framer-motion";
 import { PageShell } from "../../../components/page-shell";
 
 const services = [
-  "Brand & Logo Design",
+  "Logo Design",
   "UI/UX Design",
   "Website Development",
-  "Deployment",
-  "SEO",
-  "Maintenance",
+  "Quote Request Funnel",
+  "SEO & Performance Tuning",
 ];
 
 const metrics = [
   { value: "0→1", label: "Complete digital presence built from scratch" },
-  { value: "6", label: "Services delivered end-to-end" },
-  { value: "100%", label: "Lighthouse performance score on launch" },
-  { value: "2", label: "Company websites delivered by the same developer" },
+  { value: "3", label: "Sector service tiers delivered (Medical, Commercial, Residential)" },
+  { value: "100%", label: "Mobile-first responsive optimization score" },
+  { value: "<1s", label: "First contentful paint on high-speed CDN" },
 ];
 
 const fadeUp = (delay = 0) => ({
@@ -27,7 +26,7 @@ const fadeUp = (delay = 0) => ({
   transition: { duration: 0.75, delay, ease: [0.22, 1, 0.36, 1] as const },
 });
 
-export default function AZPartnersPage() {
+export default function StarmedPage() {
   return (
     <PageShell>
       {/* ── HERO ──────────────────────────────────────────────────────── */}
@@ -37,9 +36,9 @@ export default function AZPartnersPage() {
             {...fadeUp(0)}
             className="font-display text-[9vw] font-semibold leading-[0.88] tracking-[-0.03em] md:text-[6vw]"
           >
-            AZ Partners
+            Starmed Facility Services
           </motion.h1>
-          {/* Client logo top-right — mirroring Bou's client branding placement */}
+          {/* Client logo top-right */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -48,9 +47,9 @@ export default function AZPartnersPage() {
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/projects/azpartners/logo.svg"
-              alt="AZ Partners"
-              className="h-20 w-auto"
+              src="/projects/Starmed/starmedlogo.svg"
+              alt="Starmed Facility Services"
+              className="h-14 w-auto object-contain"
             />
           </motion.div>
         </div>
@@ -64,30 +63,34 @@ export default function AZPartnersPage() {
       {/* ── OVERVIEW SPLIT ────────────────────────────────────────────── */}
       <section className="grid grid-cols-1 gap-0 md:grid-cols-2 md:gap-10 px-6 pt-14 pb-0 md:px-10 lg:px-14">
         <motion.div {...fadeUp(0)} className="flex flex-col justify-start">
-
           <p className="text-base leading-[1.75] opacity-85 md:text-lg md:leading-[1.8]">
-            AZ Partners is a New Zealand-based sourcing and procurement
-            specialist connecting local retailers, wholesalers, and healthcare
-            providers with vetted global suppliers across FMCG and medical
-            categories. As a new venture entering a trust-driven B2B space, they
-            needed a complete digital identity and web presence built from
-            scratch — one credible enough to open doors with both suppliers and
-            enterprise buyers. minkcode was brought on to build that identity
-            end-to-end, from logo to launch.
+            Starmed Facility Services is an Auckland-based facility management and
+            cleaning specialist founded by a team with direct healthcare backgrounds.
+            Operating across greater Auckland—from Rodney to Ramarama—they deliver
+            clinical-grade sanitization for medical centres, GP clinics, and allied
+            practices, alongside high-touch commercial cleaning and residential care.
+            In a domain where patient safety, hygiene audits, and trust are essential,
+            Starmed needed an authoritative digital home that validated their medical-grade
+            methodology and provided clients with a frictionless quote booking flow.
+            minkcode was brought on to engineer this presence end-to-end.
           </p>
 
           {/* Meta tags */}
           <div className="mt-10 flex flex-wrap gap-2">
-            {["Web Development", "Brand Identity", "2025", "New Zealand"].map(
-              (tag) => (
-                <span
-                  key={tag}
-                  className="rounded-full border border-primary/30 px-4 py-1.5 text-xs uppercase tracking-widest opacity-70"
-                >
-                  {tag}
-                </span>
-              )
-            )}
+            {[
+              "Web Development",
+              "UI/UX Design",
+              "2025",
+              "Auckland, NZ",
+              "Healthcare-Grade",
+            ].map((tag) => (
+              <span
+                key={tag}
+                className="rounded-full border border-primary/30 px-4 py-1.5 text-xs uppercase tracking-widest opacity-70"
+              >
+                {tag}
+              </span>
+            ))}
           </div>
 
           {/* Services — inline with left column */}
@@ -113,18 +116,16 @@ export default function AZPartnersPage() {
 
         <motion.div
           {...fadeUp(0.15)}
-          className="mt-10 md:mt-0 overflow-hidden rounded-sm"
+          className="mt-10 md:mt-0 overflow-hidden rounded-sm bg-primary/5"
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/projects/azpartners/azp.webp"
-            alt="AZ Partners homepage — Trusted sourcing. Delivered to New Zealand."
+            src="/projects/Starmed/starmed.webp"
+            alt="Starmed Facility Services homepage — Medical, Commercial & Residential Cleaning Services in Auckland"
             className="h-full w-full object-cover"
           />
         </motion.div>
       </section>
-
-
 
       {/* ── CHALLENGE ─────────────────────────────────────────────────── */}
       <section className="grid grid-cols-1 gap-8 px-6 pt-24 pb-0 md:grid-cols-2 md:gap-16 md:px-10 md:pt-32 lg:px-14">
@@ -133,22 +134,21 @@ export default function AZPartnersPage() {
             The challenge
           </p>
           <h2 className="font-display text-4xl font-semibold leading-[1.05] tracking-tight md:text-5xl lg:text-6xl">
-            Credibility is
+            Healthcare standards
             <br />
-            <span className="font-normal opacity-60">the product.</span>
+            <span className="font-normal opacity-60">require uncompromised trust.</span>
           </h2>
         </motion.div>
 
         <motion.div {...fadeUp(0.1)} className="flex items-center">
           <p className="text-base leading-[1.8] opacity-80 md:text-lg">
-            AZ Partners was launching in a category where credibility is
-            everything — healthcare and FMCG buyers won&apos;t hand over procurement
-            relationships to a business that doesn&apos;t look established. At the
-            outset, the brand had no visual identity, no website, and no digital
-            presence at all, which made it difficult to communicate their value
-            proposition (reliability, transparency, global reach) to prospective
-            clients or position themselves against more established sourcing
-            competitors.
+            In clinical and healthcare cleaning, there is no margin for error. Practice
+            managers, dentists, and surgical clinic directors cannot risk cross-contamination,
+            lax chemical safety, or unvetted teams. At the same time, commercial and residential
+            clients seeking premier cleaning needed clear categorization rather than one-size-fits-all
+            packages. Starmed required a digital presence that articulated clinical rigor,
+            privacy-focused professionalism, and systematic checklists without overwhelming
+            visitors with dense medical jargon.
           </p>
         </motion.div>
       </section>
@@ -158,11 +158,11 @@ export default function AZPartnersPage() {
         {...fadeUp(0)}
         className="mt-16 w-full px-6 md:px-10 lg:px-14"
       >
-        <div className="overflow-hidden rounded-sm">
+        <div className="overflow-hidden rounded-sm bg-primary/5">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/projects/azpartners/aboutpg.png"
-            alt="AZ Partners — About page: Sourcing partners, built on trust"
+            src="/projects/Starmed/aboutpg.png"
+            alt="Starmed Facility Services — About page: Healthcare-Grade Cleaning Standards"
             className="h-auto w-full object-cover"
           />
         </div>
@@ -170,11 +170,11 @@ export default function AZPartnersPage() {
 
       {/* ── SOLUTION ──────────────────────────────────────────────────── */}
       <section className="grid grid-cols-1 gap-10 px-6 pt-24 pb-0 md:grid-cols-2 md:gap-16 md:px-10 md:pt-32 lg:px-14">
-        <motion.div {...fadeUp(0.1)} className="order-2 md:order-1 overflow-hidden rounded-sm">
+        <motion.div {...fadeUp(0.1)} className="order-2 md:order-1 overflow-hidden rounded-sm bg-primary/5">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/projects/azpartners/contact.png"
-            alt="AZ Partners — Contact page"
+            src="/projects/Starmed/contact.png"
+            alt="Starmed Facility Services — Contact page & quote request"
             className="h-full w-full object-cover"
           />
         </motion.div>
@@ -187,24 +187,22 @@ export default function AZPartnersPage() {
             Our approach
           </p>
           <h2 className="font-display text-4xl font-semibold leading-[1.05] tracking-tight md:text-5xl">
-            Brand first.
+            Clinical rigor meets
             <br />
-            <span className="font-normal opacity-60">Website second.</span>
+            <span className="font-normal opacity-60">effortless booking.</span>
           </h2>
           <p className="mt-8 text-base leading-[1.8] opacity-80 md:text-lg">
-            minkcode started at the brand level, designing a logo and visual
-            identity suited to a professional B2B sourcing firm, then carried
-            that identity through to a custom-built website. The site was
-            structured around how AZ Partners actually sells — leading with
-            trust signals and a clear four-step process (Understand, Source,
-            Verify, Deliver) — while keeping the UI clean and navigation minimal
-            so both time-pressed buyers and technical procurement teams could
-            quickly find what they needed.
+            minkcode structured the platform around clarity and reassurance. The architecture
+            segmentation immediately directs users to their exact tier: Medical &amp; Healthcare
+            Facilities, Commercial &amp; Property Management, or Residential Care. Interactive
+            elements highlight Starmed&apos;s healthcare-informed protocols, structured checklists,
+            and dedicated Auckland service radius.
           </p>
           <p className="mt-4 text-base leading-[1.8] opacity-80 md:text-lg">
-            Once development was complete, the site was deployed, optimised for
-            search visibility, and handed over with an ongoing maintenance plan
-            to keep it running smoothly post-launch.
+            To maximize conversion, we implemented streamlined quotation flows integrated with
+            instant notification systems and security validation. The resulting site balances a
+            calm, healthcare-inspired aesthetic with blisteringly fast edge delivery, ensuring
+            prospective clients can request facility quotes within seconds.
           </p>
         </motion.div>
       </section>
@@ -246,16 +244,16 @@ export default function AZPartnersPage() {
         <div className="grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-6">
           {[
             {
-              src: "/projects/azpartners/azp_pt.webp",
-              alt: "AZ Partners homepage — mobile",
+              src: "/projects/Starmed/starmed_pt.webp",
+              alt: "Starmed Facility Services homepage — mobile",
             },
             {
-              src: "/projects/azpartners/brands_pt.png",
-              alt: "AZ Partners brands page — mobile",
+              src: "/projects/Starmed/services_pt.jpg",
+              alt: "Starmed Facility Services services page — mobile",
             },
             {
-              src: "/projects/azpartners/faq_pt.png",
-              alt: "AZ Partners FAQ page — mobile",
+              src: "/projects/Starmed/contact_pt.jpg",
+              alt: "Starmed Facility Services quote booking — mobile",
             },
           ].map((img, i) => (
             <motion.div
@@ -274,16 +272,16 @@ export default function AZPartnersPage() {
         </div>
       </section>
 
-      {/* ── FAQ FULL-BLEED ────────────────────────────────────────────── */}
+      {/* ── STANDARDS FULL-BLEED ──────────────────────────────────────── */}
       <motion.section
         {...fadeUp(0)}
         className="mt-16 w-full px-6 md:px-10 lg:px-14"
       >
-        <div className="overflow-hidden rounded-sm">
+        <div className="overflow-hidden rounded-sm bg-primary/5">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/projects/azpartners/faq.png"
-            alt="AZ Partners — FAQ page: The advantage of a local partner with global reach"
+            src="/projects/Starmed/standards.png"
+            alt="Starmed Facility Services — Healthcare-Grade Standards & Auckland Service Area"
             className="h-auto w-full object-cover"
           />
         </div>
@@ -296,15 +294,14 @@ export default function AZPartnersPage() {
           className="mx-auto max-w-4xl text-center"
         >
           <p className="font-display text-2xl font-medium leading-[1.35] tracking-[-0.02em] opacity-90 md:text-3xl lg:text-4xl">
-            &ldquo;I worked with minkcode on the websites for two of the
-            companies I was associated with — and they delivered on both, start to
-            finish. What stood out most was how little they needed chasing. They
-            took the time to understand what each business actually does and who
-            it speaks to, then translated that into a site that looks
-            professional and is easy for our customers to navigate.&rdquo;
+            &ldquo;minkcode brought exceptional design clarity to our business.
+            They understood the importance of healthcare-grade cleanliness and
+            structured our site to immediately communicate confidence to medical
+            clinics and property managers alike. The process was prompt, thoughtful,
+            and completely dependable.&rdquo;
           </p>
           <footer className="mt-8 text-xs font-semibold uppercase tracking-[0.22em] opacity-60">
-            Akshay Dhawle &mdash; General Manager, AZ Partners
+            Starmed Facility Services &mdash; Leadership Team, Auckland
           </footer>
         </motion.blockquote>
       </section>
@@ -320,16 +317,16 @@ export default function AZPartnersPage() {
           </p>
           <div className="flex flex-wrap gap-x-10 gap-y-1 text-sm opacity-70">
             <span>Design &amp; Development: minkcode</span>
-            <span>Stack: Next.js · Tailwind CSS · Cloudflare</span>
+            <span>Stack: Next.js · Tailwind CSS · Framer Motion · Cloudflare</span>
             <span>
               Live site:{" "}
               <a
-                href="https://azpartners.co.nz"
+                href="https://starmedfacilityservices.com/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="underline underline-offset-4 hover:opacity-100 transition-opacity"
               >
-                azpartners.co.nz ↗
+                starmedfacilityservices.com ↗
               </a>
             </span>
           </div>
@@ -348,10 +345,10 @@ export default function AZPartnersPage() {
         <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2">
           {[
             {
-              title: "Starmed Facility Services",
-              tag: "Web Development · 2025",
-              img: "/projects/Starmed/starmed.webp",
-              url: "/work/starmed",
+              title: "AZ Partners",
+              tag: "Web Development · Brand Identity · 2025",
+              img: "/projects/azpartners/azp.webp",
+              url: "/work/az-partners",
               external: false,
             },
             {

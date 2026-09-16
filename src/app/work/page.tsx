@@ -16,6 +16,8 @@ const projects = [
     img: "/projects/azpartners/mainbg.png",
     imgMobile: "/projects/azpartners/mainbg.png",
     logo: "/projects/azpartners/logo.svg",
+    logoFilter: "brightness(0) saturate(100%) invert(97%) sepia(19%) saturate(500%) hue-rotate(340deg) brightness(102%)",
+    logoSize: "max-w-[55%] max-h-[40%]",
     wide: true,
   },
   {
@@ -24,10 +26,13 @@ const projects = [
     year: "2025",
     description:
       "Medical, commercial & residential cleaning services in Auckland.",
-    href: "https://starmedfacilityservices.com/",
-    external: true,
-    img: "/projects/starmed.webp",
-    imgMobile: "/projects/starmed_pt.webp",
+    href: "/work/starmed",
+    external: false,
+    img: "/projects/Starmed/mainbg.png",
+    imgMobile: "/projects/Starmed/mainbg.png",
+    logo: "/projects/Starmed/starmedlogo.svg",
+    logoFilter: "brightness(0) invert(1)",
+    logoSize: "max-w-[60%] max-h-[35%]",
     wide: false,
   },
   {
@@ -107,8 +112,8 @@ export default function WorkPage() {
                     <img
                       src={(p as typeof p & { logo: string }).logo}
                       alt={`${p.title} logo`}
-                      className="h-24 w-auto drop-shadow-[0_2px_16px_rgba(0,0,0,0.5)]"
-                      style={{ filter: "brightness(0) saturate(100%) invert(97%) sepia(19%) saturate(500%) hue-rotate(340deg) brightness(102%)" }}
+                      className={`${ (p as typeof p & { logoSize?: string }).logoSize ?? "max-w-[50%] max-h-[40%]" } w-auto h-auto object-contain drop-shadow-[0_2px_16px_rgba(0,0,0,0.5)]`}
+                      style={{ filter: (p as typeof p & { logoFilter?: string }).logoFilter ?? "none" }}
                     />
                   </div>
                 )}
