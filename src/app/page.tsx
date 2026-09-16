@@ -7,25 +7,44 @@ import { MarqueeTech } from "../components/marquee-tech";
 
 const selectedWork = [
   {
-    title: "Northwind Ceramics",
-    tag: "E-commerce",
+    title: "AZ Partners",
+    tag: "Web Development",
     year: "2025",
-    prompt:
-      "Editorial ceramic studio product photography, warm beige backdrop, cream pottery, soft daylight, minimal composition",
+    description: "Sourcing & procurement specialists connecting local businesses with trusted global suppliers.",
+    href: "/work/az-partners",
+    external: false,
+    img: "/projects/azpartners/mainbg.png",
+    imgMobile: "/projects/azpartners/mainbg.png",
+    logo: "/projects/azpartners/logo.svg",
+    logoFilter: "brightness(0) saturate(100%) invert(97%) sepia(19%) saturate(500%) hue-rotate(340deg) brightness(102%)",
+    logoSize: "max-w-[55%] max-h-[40%]",
   },
   {
-    title: "Halcyon Finance",
-    tag: "Fintech",
+    title: "Jungle Belles",
+    tag: "Digital Marketing · Social Media",
     year: "2025",
-    prompt:
-      "Abstract financial dashboard render on cream background, subtle blue accents, glass and paper textures, minimal design",
+    description: "Complete social media management, brand storytelling, and visual campaigns for women-only luxury wildlife expeditions.",
+    href: "/work/jungle-belles",
+    external: false,
+    video: "/projects/JungleBelles/cardbg.mp4",
+    img: "/projects/JungleBelles/mainbg.png",
+    imgMobile: "/projects/JungleBelles/mainbg.png",
+    logo: "/projects/JungleBelles/JB.svg",
+    logoFilter: "brightness(0) invert(1)",
+    logoSize: "max-w-[65%] max-h-[58%]",
   },
   {
-    title: "Field Notes Journal",
-    tag: "Publication",
-    year: "2024",
-    prompt:
-      "Open editorial magazine spread mockup on buttermilk paper, blue accents, swiss typography, top-down flat lay",
+    title: "Starmed Facility Services",
+    tag: "Web Development",
+    year: "2025",
+    description: "Medical, commercial & residential cleaning services in Auckland.",
+    href: "/work/starmed",
+    external: false,
+    img: "/projects/Starmed/mainbg.png",
+    imgMobile: "/projects/Starmed/mainbg.png",
+    logo: "/projects/Starmed/starmedlogo.svg",
+    logoFilter: "brightness(0) invert(1)",
+    logoSize: "max-w-[60%] max-h-[35%]",
   },
 ];
 
@@ -56,7 +75,7 @@ export default function Index() {
             className="block"
           >
             digital{" "}
-            <span className="italic font-normal opacity-60">experiences.</span>
+            <span className=" font-normal opacity-60">experiences.</span>
           </motion.span>
         </h1>
 
@@ -134,27 +153,65 @@ export default function Index() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-15%" }}
               transition={{ duration: 0.7, delay: i * 0.1 }}
-              className="group"
+              className="group block"
             >
-              <div className="mb-4 overflow-hidden rounded-2xl bg-primary/10 aspect-[4/5]">
-                <div
-                  data-lov-image-placeholder
-                  data-prompt={p.prompt}
-                  data-width="800"
-                  data-height="1000"
-                  className="h-full w-full transition-transform duration-700 group-hover:scale-105"
-                />
-              </div>
-              <div className="flex items-baseline justify-between">
-                <h3 className="font-display text-xl font-medium">{p.title}</h3>
-                <span className="text-xs uppercase tracking-widest opacity-60">
-                  {p.year}
+              <Link
+                href={p.href}
+                {...(p.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                className="block"
+              >
+                <div className="relative mb-4 overflow-hidden rounded-sm bg-primary/10 aspect-video">
+                  {"video" in p && p.video ? (
+                    <>
+                      <video
+                        src={p.video}
+                        poster={p.img}
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+                      />
+                      <div className="pointer-events-none absolute inset-0 bg-black/30 transition-opacity duration-500 group-hover:bg-black/25" />
+                    </>
+                  ) : (
+                    <picture className="h-full w-full block">
+                      <source media="(max-width: 767px)" srcSet={p.imgMobile} />
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={p.img}
+                        alt={p.title}
+                        className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+                      />
+                    </picture>
+                  )}
+                  {"logo" in p && p.logo && (
+                    <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={(p as typeof p & { logo: string }).logo}
+                        alt={`${p.title} logo`}
+                        className={`${ (p as typeof p & { logoSize?: string }).logoSize ?? "max-w-[50%] max-h-[40%]" } w-auto h-auto object-contain drop-shadow-[0_3px_20px_rgba(0,0,0,0.65)]`}
+                        style={{ filter: (p as typeof p & { logoFilter?: string }).logoFilter ?? "none" }}
+                      />
+                    </div>
+                  )}
+                </div>
+                <div className="flex items-baseline justify-between">
+                  <h3 className="font-display text-xl font-medium">{p.title}</h3>
+                  <span className="text-xs uppercase tracking-widest opacity-60">
+                    {p.year}
+                  </span>
+                </div>
+                <p className="mt-1 text-sm opacity-70">{p.description}</p>
+                <span className="mt-3 inline-block rounded-full border border-primary/30 px-3 py-1 text-xs uppercase tracking-widest opacity-70">
+                  {p.tag}
                 </span>
-              </div>
-              <p className="mt-1 text-sm opacity-70">{p.tag}</p>
+              </Link>
             </motion.div>
           ))}
         </div>
+
       </section>
 
       {/* Services teaser */}
@@ -191,7 +248,7 @@ export default function Index() {
           <h2 className="font-display text-5xl font-semibold leading-[0.95] md:text-8xl">
             Have a project
             <br />
-            <span className="italic font-normal opacity-60">in mind?</span>
+            <span className="font-normal opacity-60">in mind?</span>
           </h2>
           <Link
             href="/contact"

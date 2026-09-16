@@ -15,7 +15,7 @@ export function PageShell({ children }: Props) {
       initial={{ opacity: 0, y: 8 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-      className="min-h-screen w-full"
+      className="min-h-screen w-full max-w-full overflow-x-hidden"
     >
       <div className="flex items-center px-6 pt-6 md:px-10 md:pt-8 lg:px-14">
         <Link href="/" className="block">
