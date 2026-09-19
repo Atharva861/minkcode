@@ -59,7 +59,7 @@
 :root {
   --radius: 0.75rem;
 
-  --background: #fff9e8;
+  --background: #fdf2d7;
   --foreground: #285ccc;
 
   --card: #fff9e8;
@@ -110,6 +110,9 @@
   html,
   body {
     background-color: var(--color-background);
+    background-image: url("/textures/grain.png");
+    background-repeat: repeat;
+    background-size: 160px 160px;
     color: var(--color-foreground);
     font-family: var(--font-sans);
     font-feature-settings: "ss01", "cv11";

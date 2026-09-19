@@ -17,7 +17,7 @@ const cabinetGrotesk = localFont({
 export const metadata: Metadata = {
   title: "minkcode",
   description:
-    "Minkcode is a boutique web development studio designing, building, and deploying digital products from scratch.",
+    "minkcode is a boutique web development studio designing, building, and deploying digital products from scratch.",
 };
 
 export default function RootLayout({

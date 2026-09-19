@@ -26,7 +26,7 @@ export function SiteFooter() {
             / Find us
           </p>
           <p className="text-lg leading-tight md:text-xl">
-            Minkcode Studio
+            minkcode Studio
             <br />
             Remote first
             <br />

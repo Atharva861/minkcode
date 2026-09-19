@@ -85,7 +85,7 @@ export default function Index() {
           transition={{ duration: 0.8, delay: 0.5 }}
           className="mt-12 max-w-xl text-base leading-relaxed opacity-80 md:mt-16 md:text-lg"
         >
-          Minkcode is a boutique software studio crafting high-performance web
+          minkcode is a boutique software studio crafting high-performance web
           experiences for brands that demand better. Design, development,
           deployment — end to end.
         </motion.p>
