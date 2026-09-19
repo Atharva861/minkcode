@@ -223,7 +223,9 @@ export default function Index() {
           {[
             { n: "01", t: "Web development from scratch" },
             { n: "02", t: "Website redesign & rebrand" },
-            { n: "03", t: "Maintenance & growth" },
+            { n: "03", t: "Social media management" },
+            { n: "04", t: "Digital marketing & growth" },
+            { n: "05", t: "Maintenance & support" },
           ].map((s) => (
             <Link
               key={s.n}

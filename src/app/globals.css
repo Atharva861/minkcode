@@ -59,7 +59,7 @@
 :root {
   --radius: 0.75rem;
 
-  --background: #fdf2d7;
+  --background: #fff9e8;
   --foreground: #285ccc;
 
   --card: #fff9e8;
@@ -118,7 +118,7 @@
     font-feature-settings: "ss01", "cv11";
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
-    overflow-x: hidden;
+    overflow-x: clip;
     max-width: 100%;
   }
 

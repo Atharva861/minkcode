@@ -156,10 +156,6 @@ export default function AboutPage() {
       >
         <div className="grid grid-cols-1 gap-10 md:grid-cols-12">
           <div className="md:col-span-5">
-            <p className="mb-6 text-xs tracking-[0.25em] opacity-70">
-              <span className="uppercase">/ WHY </span>
-              <span className="lowercase">minkcode</span>
-            </p>
             <h2 className="font-display text-4xl font-semibold leading-tight md:text-6xl">
               Build it.
               <br />
